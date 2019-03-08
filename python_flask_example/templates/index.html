@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title> Field Mapper </title>
+
+  <style>
+
+    body {
+
+        color: white;
+        background-color: navy;
+
+
+    }
+
+    label{
+        display: inline-block;
+        float: left;
+        clear: left;
+        width: 250px;
+        text-align: right;
+    }
+
+    .field{
+        display: inline-block;
+        float: left;
+        }
+		
+	.noDisplay{display:none;}
+
+  </style>
+
+
+  <script>
+
+
+function file_reader(input_string, file_name){
+
+
+      var fields = input_string.split(",");
+
+      var field_name = "field";
+      var position = "pos"
+      var i = 0;
+
+      document.getElementById('FileName').innerHTML = 'File Name&nbsp;&nbsp;<input id="file_name" type="text" value="'+file_name+'">';
+
+      for (var field in fields){
+
+            document.getElementById('field_load').innerHTML += '<div ><label>'+fields[field]+'&nbsp;&nbsp;&nbsp;&nbsp;</label><input class="field" type="text" id="'+field_name+i+'">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width:23px" id="'+field_name+i+position+'" value="'+i+'"/></div>';
+            i++;
+
+          }
+
+      document.getElementById('list_size').value = i;
+
+}
+
+function map(){
+
+      let name = "field";
+      let pos = "pos";
+      let header_num = document.getElementById('list_size').value;
+
+      let header_position = [];
+      var header_map_array = [];
+
+      for(let i=0; i < header_num; i++ ){
+
+          header_map_array.push(document.getElementById(name+i+pos).value)
+          header_map_array.push(document.getElementById(name+i).value)
+
+        }
+
+      
+	  let FileName = document.getElementById('file_name').value;
+	  document.getElementById('submit').innerHTML = '<form action = "result" method = "post"><p><input type = "text" name = "Name" value = "'+FileName+','+header_map_array+'"><input type = "submit" value = "submit"/>';
+	  
+
+}
+
+  </script>
+
+
+
+</head>
+
+
+
+<body>
+
+  <h1>Field Map Appicatiom</h1>
+
+  <h4>Load Input Field List&nbsp;&nbsp;<input type="file">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Write To Map File" onclick = map()></h4>
+  
+  <div id="submit">
+  </div>
+
+  <script>
+
+      const input = document.querySelector('input[type="file"]')
+      input.addEventListener('change', function() {
+
+          const reader = new FileReader()
+          reader.onload = function () {
+
+
+            console.log(input.files);
+
+            var file_name = input.files[0].name;
+
+
+
+           file_reader(reader.result,file_name);
+        }
+          reader.readAsText(input.files[0])
+
+
+      },false)
+
+
+
+  </script>
+
+  <div id="FileName">
+  </div>
+</br>
+
+  <div id="field_load">
+  </div>
+  <input id="list_size" class="noDisplay" type="text">
+
+
+<div id="output">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
