@@ -1,0 +1,26 @@
+.Header {
+
+  color: blue;
+  text-align: center;
+  border: 1px solid black;
+
+}
+
+#showTable {
+
+  visibility: hidden;
+
+}
+
+#Show_Tables_Button {
+
+  visibility: hidden;
+
+}
+
+.storage {
+
+
+  visibility: hidden;
+
+}

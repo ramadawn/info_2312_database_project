@@ -1,0 +1,41 @@
+<html>
+<head>
+
+    <title>Online Dbase Tool</title>
+    
+    <link rel="stylesheet" href="css/index_styleSheet.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="js/indexJS.js"></script>
+
+								
+
+
+</head>
+
+<body>
+
+  <div class="Header">
+    <h1>Online Database Builder and Viewer</h1>
+  </div>
+
+  <div class="showDbase">
+    <h4>Create New Database</h4>
+    Database Name&nbsp;&nbsp;&nbsp;<input type="text" id="DbaseName">
+    <input type="button" value="Add Database" onclick='addDBase()'> 
+    <input type="button" value="Drop Database" onclick='dropDBase()'>        
+    
+    
+    <br>
+    <input type="button" onclick='showDatabases()'  value="Show Database">
+	</div>
+  
+  <div id="databaselist">
+  </div>
+  
+  <div id="msg">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+
+    <title>Online Dbase Tool</title>
+    
+    <link rel="stylesheet" href="css/index_styleSheet.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+								
+<script>
+
+
+function showDatabases(){
+//make an ajax call and get status value using the same 'id'
+    var dBaseStringList;
+    $.ajax({
+
+            type:"POST",
+            //data
+            url:'/showdatabases',
+            //can send multipledata like {data1:var1,data2:var2,data3:var3
+            //can use dataType:'text/html' or 'json' if response type expected 
+            success:function(ajax_dBaseStringList){
+                  // process on data
+                  dBaseStringList = ajax_dBaseStringList;
+                  var dBaseArray = dBaseStringList.split(',');
+                  document.getElementById("databaselist").innerHTML = "<h2>Current Databases</h2>";
+                  for(i = 0; i < dBaseArray.length; i++){
+                    if (dBaseArray[i] == " ") continue;
+                    document.getElementById("databaselist").innerHTML += dBaseArray[i]+"<br>";
+                  }   
+                   
+            },
+		    error: function(request,status,errorThrown) {
+            // There's been an error, do something with it!
+            // Only use status and errorThrown.
+            // Chances are request will not have anything in it.
+		    console.log(errorThrown);
+      }
+        });
+    
+        
+    //console.log(dBaseArray);
+    }
+
+  
+
+
+</script>
+	  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
+</head>
+
+<body>
+
+  <div class="Header">
+    <h1>Online Database Biulder and Viewer</h1>
+  </div>
+
+  <div class="showDbase">
+    <h4>Create New Database</h4>
+    Database Name&nbsp;&nbsp;&nbsp;<input type="text" id="DbaseName"><br>
+    <input type="button" onclick='showDatabases()'  value="Show Database">
+	
+	
+	</div>
+	<div id="databaselist">
+	
+	</div>
+
+</body>
+</html>

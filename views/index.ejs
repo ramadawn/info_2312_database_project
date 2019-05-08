@@ -1,0 +1,70 @@
+<html>
+<head>
+
+    <title>Online Dbase Tool</title>
+    
+    <link rel="stylesheet" href="css/index_styleSheet.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="js/indexJS.js"></script>
+
+								
+
+
+</head>
+
+<body>
+
+  <div class="Header">
+    <h1>Online Database Builder and Viewer</h1>
+  </div>
+
+  <div class="showDbase"> <!--Create/delete button and dbase name field-->
+    <h4>Create/Delete Database</h4>
+    Database Name&nbsp;&nbsp;&nbsp;<input type="text" id="DbaseName">
+    <input type="button" value="Add Database" onclick='addDBase()'> 
+    <input type="button" value="Drop Database" onclick='dropDBase()'>        
+    <br>
+    <!--Show dataase button-->
+    <input type="button" onclick='showDatabases()'  value="Show Database"></div>
+  
+  <!--Database output field-->
+  <div id="databaselist"></div>
+
+ <!--Show database tables and create tables-->
+  <div id="Show_Tables_Button">
+    <input type="button" value="Show Tables" onclick='showTables()'><br>
+    <input type="file" id="csvFile"><input type="button" value="Load CSV" onclick='loadcsv()'>
+    File contains headers<input type="radio" id="csv" name="csv" value="yes">Yes<input type="radio" name="csv" value="no">No<br>
+  </div>
+  <!--Div for creating UI button-->
+  <div id="UIButton"></div>
+
+  <!--Div for Load CSV in database button-->
+  <div id="Load_CSV"></div>
+
+  <!--tables list div-->
+  <div id="tablelist"></div>
+  <!--button for displaying selected table-->
+  <div id="showTable">
+    <input type="button" value="Show Table" onclick='displayTable()'>
+  </div>
+
+  <!--For displaying Tableinformation-->
+  <div id="Table_Display"></div>
+
+  <!--div for creating table-->
+  <div id="Load_Table"></div>
+  
+  <!--Action msg field-->
+  <div id="msg"></div>
+  <!--input type="button" value="make visisble" onclick='make_visible()'-->
+
+  <!--storage box for dbases-->
+  <input class="storage" type="text" id="dbaseNamearray">
+  <input class="storage" type="text" id="tableNamearray">
+  <input class="storage" type="text" id="csvfiledata">
+  
+</body>
+</html>

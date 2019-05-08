@@ -1,0 +1,59 @@
+<html>
+<head>
+
+    <title>Online Dbase Tool</title>
+    <!--link to Style Sheet in /CSS -->
+
+								<!--Flask Specific link tag to stylesheet inside the static folder-->
+	  <!--<link rel="stylesheet" href="css/index_styleSheet.css">-->
+	  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+								<!--Flask Specific link tag to javascripts the static folder-->
+      <!--script src="scripts/indexJS.js" charset="utf-8"></script-->
+	  <script>
+function showDatabases(){
+
+
+//make an ajax call and get status value using the same 'id'
+var databaseListElement= document.getElementById("databaselist");
+$.ajax({
+
+        type:"GET",//or POST
+        url:'http://127.0.0.1:3000/DbaseTool/api/showdatabases',
+        //can send multipledata like {data1:var1,data2:var2,data3:var3
+        //can use dataType:'text/html' or 'json' if response type expected 
+        success:function(foo){
+               // process on data
+               console.log(foo);
+        },
+		error: function(request,status,errorThrown) {
+        // There's been an error, do something with it!
+        // Only use status and errorThrown.
+        // Chances are request will not have anything in it.
+		console.log(errorThrown);
+   }
+     });
+
+}</script>
+	  <<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
+</head>
+
+<body>
+
+  <div class="Header">
+    <h1>Online Database Biulder and Viewer</h1>
+  </div>
+
+  <div class="showDbase">
+    <h4>Create New Database</h4>
+    Database Name&nbsp;&nbsp;&nbsp;<input type="text" id="DbaseName"><br>
+    <input type="button" onclick='showDatabases()'  value="Show Database">
+	
+	
+	</div>
+	<div id="databaselist">
+	
+	</div>
+
+</body>
+</html>
